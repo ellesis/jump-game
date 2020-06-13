@@ -21,7 +21,6 @@ function Background() {
   // State
   const [offSet, setOffSet] = useState(0)
 
-
   // useEffect
   useEffect(() => {
     return () => {
@@ -39,7 +38,7 @@ function Background() {
   // background move
   const setBackgroundMovement = () => {
     interval.current = setInterval(() => {
-      if (offSet == 1000-speed) {
+      if (offSet === 1000-speed) {
         setOffSet(0)
       } else {
         setOffSet(offSet + speed)

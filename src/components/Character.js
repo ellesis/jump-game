@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CharacterImg from '../image/character.png';
 
@@ -26,7 +26,7 @@ const Character = () => {
   const initTop = 375
   const [top, setTop] = useState(initTop)
 
-  // useEffect
+  // useEffect mount and unMount
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown) //add keydown event
     

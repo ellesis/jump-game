@@ -58,9 +58,21 @@ const App = () => {
     }
   }, [time, isStart])
 
-  const checkConclict = () => {
+  const checkConclict = () => { // collision
+    let enemy = document.querySelector('img#enemy')
+    let character = document.querySelector('img#character')
 
-
+    if (enemy !== null && character !== null) {
+      // console.log(enemy.x)
+      // console.log(character.x)
+      let dis = Math.pow(enemy.x - character.x, 2) + Math.pow(enemy.y - character.y, 2)
+      if (dis < 3000) {
+        alert("Game Over!")
+        if (result < time) setResult(time) // update high score
+        setIsStart(false)
+        setTime(0)
+      }
+    }
   }
 
   const handleClickStartButton = () => {
@@ -84,7 +96,7 @@ const App = () => {
         :
           <div>
             <Button onClick={handleClickStartButton} className={classes.button}>
-              Your Highest Record : {Math.floor(result)}<br/>
+              Your Highest Record : {Math.floor(result)} seconds<br/>
               Click to Start Game!
             </Button>
           </div>

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import EnemyImg from '../image/enemy.png';
+import React, {useState, useEffect} from 'react'
+import {makeStyles} from '@material-ui/core/styles'
+import EnemyImg from '../image/enemy.png'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   character: {
     position: 'absolute',
-    width:'80px',
-    height:'80px',
-    top: '410px',
+    width: '80px',
+    height: '80px',
+    top: '410px'
   }
 }))
 
@@ -17,7 +17,7 @@ const Enemy = (props) => {
   // init
   const updateTime = 20
   const speed = 10
-  const moveWidth = 1000 - 50  // canvas with = 1000
+  const moveWidth = 1000 - 50 // canvas with = 1000
   var timeOutList = []
 
   const initLeft = 1000 - 20
@@ -36,17 +36,18 @@ const Enemy = (props) => {
   // useEffect - unMount
   useEffect(() => {
     return () => {
-      for (let i=0; i<timeOutList.length; i++) {
+      for (let i = 0; i < timeOutList.length; i++) {
         clearTimeout(timeOutList[i])
       }
     }
-  },[])
+  }, [])
 
-  const move = () => { // when reach left end, Enemy stop 
-    for (let i=0; i<moveWidth/speed; i++) {
+  const move = () => {
+    // when reach left end, Enemy stop
+    for (let i = 0; i < moveWidth / speed; i++) {
       let timeOut = setTimeout(() => {
         setLeft(initLeft - speed * i)
-        if (i === moveWidth / speed -1) setIsMoving(false)
+        if (i === moveWidth / speed - 1) setIsMoving(false)
       }, updateTime * i)
       timeOutList.push(timeOut)
     }
@@ -54,16 +55,10 @@ const Enemy = (props) => {
 
   return (
     <div>
-      {
-        // isMoving == true : show Enemy
-        isMoving ?
-          <img id="enemy" src={EnemyImg}
-            className={classes.character}
-            style={{left:left}}
-          />
-        :
-          null
-        }
+      {// isMoving == true : show Enemy
+      isMoving ? (
+        <img id="enemy" src={EnemyImg} className={classes.character} style={{left: left}} alt="enemy" />
+      ) : null}
     </div>
   )
 }

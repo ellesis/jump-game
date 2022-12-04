@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import {makeStyles} from '@material-ui/core/styles'
+/*jshint loopfunc: true */
+import React, { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import CharacterImg from '../image/character.png'
 
 const useStyles = makeStyles((theme) => ({
@@ -68,7 +69,13 @@ const Character = () => {
 
   return (
     <div>
-      <img id="character" src={CharacterImg} className={classes.character} style={{top: top}} alt="character" />
+      <img
+        id="character"
+        src={CharacterImg}
+        className={classes.character}
+        style={{ top: top }}
+        alt="character"
+      />
     </div>
   )
 }
